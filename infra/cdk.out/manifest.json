@@ -1,0 +1,84 @@
+{
+  "version": "16.0.0",
+  "artifacts": {
+    "Tree": {
+      "type": "cdk:tree",
+      "properties": {
+        "file": "tree.json"
+      }
+    },
+    "elite-db-stack.assets": {
+      "type": "cdk:asset-manifest",
+      "properties": {
+        "file": "elite-db-stack.assets.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+      }
+    },
+    "elite-db-stack": {
+      "type": "aws:cloudformation:stack",
+      "environment": "aws://388429540325/ap-southeast-2",
+      "properties": {
+        "templateFile": "elite-db-stack.template.json",
+        "validateOnSynth": false,
+        "assumeRoleArn": "arn:${AWS::Partition}:iam::388429540325:role/cdk-hnb659fds-deploy-role-388429540325-ap-southeast-2",
+        "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::388429540325:role/cdk-hnb659fds-cfn-exec-role-388429540325-ap-southeast-2",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-388429540325-ap-southeast-2/04c2b43bed08f89011ef229d6346c9568a1aaf0198d928313279f5e95fb5ba52.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
+        "additionalDependencies": [
+          "elite-db-stack.assets"
+        ],
+        "lookupRole": {
+          "arn": "arn:${AWS::Partition}:iam::388429540325:role/cdk-hnb659fds-lookup-role-388429540325-ap-southeast-2",
+          "requiresBootstrapStackVersion": 8,
+          "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+        }
+      },
+      "dependencies": [
+        "elite-db-stack.assets"
+      ],
+      "metadata": {
+        "/elite-db-stack/elite-main-table": [
+          {
+            "type": "aws:cdk:hasPhysicalName",
+            "data": {
+              "Ref": "elitemaintable7DB2F526"
+            }
+          }
+        ],
+        "/elite-db-stack/elite-main-table/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "elitemaintable7DB2F526"
+          }
+        ],
+        "/elite-db-stack/Exportmain-table": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "Exportmaintable"
+          }
+        ],
+        "/elite-db-stack/CDKMetadata/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadata"
+          }
+        ],
+        "/elite-db-stack/BootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BootstrapVersion"
+          }
+        ],
+        "/elite-db-stack/CheckBootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CheckBootstrapVersion"
+          }
+        ]
+      },
+      "displayName": "elite-db-stack"
+    }
+  }
+}

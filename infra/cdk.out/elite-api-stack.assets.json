@@ -1,0 +1,20 @@
+{
+  "version": "16.0.0",
+  "files": {
+    "1fbe2e62c739c25dda25e2692a3e1c0b050ba42e1b04f3f102506999dc4832b8": {
+      "source": {
+        "path": "elite-api-stack.template.json",
+        "packaging": "file"
+      },
+      "destinations": {
+        "388429540325-ap-southeast-2": {
+          "bucketName": "cdk-hnb659fds-assets-388429540325-ap-southeast-2",
+          "objectKey": "1fbe2e62c739c25dda25e2692a3e1c0b050ba42e1b04f3f102506999dc4832b8.json",
+          "region": "ap-southeast-2",
+          "assumeRoleArn": "arn:${AWS::Partition}:iam::388429540325:role/cdk-hnb659fds-file-publishing-role-388429540325-ap-southeast-2"
+        }
+      }
+    }
+  },
+  "dockerImages": {}
+}
