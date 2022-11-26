@@ -10,8 +10,11 @@
     "watch": "tsc -w",
     "test": "jest",
     "cdk": "cdk",
-    "diff:db": "yarn build && yarn cdk diff elite-db-stack",
-    "deploy:db": "yarn build && yarn cdk deploy elite-db-stack"
+    "diff:db": "yarn build && yarn cdk diff elite-db-stack --profile simbo",
+    "deploy:db": "yarn build && yarn cdk deploy elite-db-stack --profile simbo",
+    "diff:api": "yarn build && yarn cdk diff elite-api-stack --profile simbo",
+    "deploy:api": "yarn build && yarn cdk deploy elite-api-stack --profile simbo",
+    "deploy:api:local": "cdklocal deploy elite-api-stack"
   },
   "devDependencies": {
     "@types/jest": "^26.0.10",

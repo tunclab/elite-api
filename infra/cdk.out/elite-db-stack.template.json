@@ -39,7 +39,7 @@
     "CDKMetadata": {
       "Type": "AWS::CDK::Metadata",
       "Properties": {
-        "Analytics": "v2:deflate64:H4sIAAAAAAAA/zPSMzTTM1BMLC/WTU7J1s3JTNKrDi5JTM7WAQrFp1TmJebmpwDFQhKTclJ1nNPywIxanaDU4vzSomSwkH9pSUFpCYgFE63VyctPSdXLKtYvAxpvaAy0Ias4M1O3qDSvJDM3VS8IQgMAvi9nuH0AAAA="
+        "Analytics": "v2:deflate64:H4sIAAAAAAAA/zXISQqAIBhA4bO41790Ee07QFDtw9TABg2HIqK7N9HqPT4GNIMU8c0TIUcy6Q6OOnAx4ptauRs+W3lbw7tJ4aI375y4Ut5GJ14qY1hieO7XExsrFQw+WWkOlAFFg9eauGiCnhVUXy8UpbFQfQAAAA=="
       },
       "Metadata": {
         "aws:cdk:path": "elite-db-stack/CDKMetadata/Default"

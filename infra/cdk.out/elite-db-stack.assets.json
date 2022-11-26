@@ -1,7 +1,7 @@
 {
   "version": "16.0.0",
   "files": {
-    "04c2b43bed08f89011ef229d6346c9568a1aaf0198d928313279f5e95fb5ba52": {
+    "d2a7c7b62983e5a9f94fbd8bdb2ffd03874e1d09774b7bf0fcabb398fe6f29af": {
       "source": {
         "path": "elite-db-stack.template.json",
         "packaging": "file"
@@ -9,7 +9,7 @@
       "destinations": {
         "388429540325-ap-southeast-2": {
           "bucketName": "cdk-hnb659fds-assets-388429540325-ap-southeast-2",
-          "objectKey": "04c2b43bed08f89011ef229d6346c9568a1aaf0198d928313279f5e95fb5ba52.json",
+          "objectKey": "d2a7c7b62983e5a9f94fbd8bdb2ffd03874e1d09774b7bf0fcabb398fe6f29af.json",
           "region": "ap-southeast-2",
           "assumeRoleArn": "arn:${AWS::Partition}:iam::388429540325:role/cdk-hnb659fds-file-publishing-role-388429540325-ap-southeast-2"
         }
