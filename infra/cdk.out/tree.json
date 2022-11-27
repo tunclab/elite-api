@@ -444,6 +444,218 @@
               "version": "10.1.91"
             }
           },
+          "hosted-zone": {
+            "id": "hosted-zone",
+            "path": "elite-api-stack/hosted-zone",
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.Resource",
+              "version": "2.16.0"
+            }
+          },
+          "elite-domain-cert": {
+            "id": "elite-domain-cert",
+            "path": "elite-api-stack/elite-domain-cert",
+            "children": {
+              "CertificateRequestorFunction": {
+                "id": "CertificateRequestorFunction",
+                "path": "elite-api-stack/elite-domain-cert/CertificateRequestorFunction",
+                "children": {
+                  "ServiceRole": {
+                    "id": "ServiceRole",
+                    "path": "elite-api-stack/elite-domain-cert/CertificateRequestorFunction/ServiceRole",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "elite-api-stack/elite-domain-cert/CertificateRequestorFunction/ServiceRole/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::IAM::Role",
+                          "aws:cdk:cloudformation:props": {
+                            "assumeRolePolicyDocument": {
+                              "Statement": [
+                                {
+                                  "Action": "sts:AssumeRole",
+                                  "Effect": "Allow",
+                                  "Principal": {
+                                    "Service": "lambda.amazonaws.com"
+                                  }
+                                }
+                              ],
+                              "Version": "2012-10-17"
+                            },
+                            "managedPolicyArns": [
+                              {
+                                "Fn::Join": [
+                                  "",
+                                  [
+                                    "arn:",
+                                    {
+                                      "Ref": "AWS::Partition"
+                                    },
+                                    ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+                                  ]
+                                ]
+                              }
+                            ]
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_iam.CfnRole",
+                          "version": "2.16.0"
+                        }
+                      },
+                      "DefaultPolicy": {
+                        "id": "DefaultPolicy",
+                        "path": "elite-api-stack/elite-domain-cert/CertificateRequestorFunction/ServiceRole/DefaultPolicy",
+                        "children": {
+                          "Resource": {
+                            "id": "Resource",
+                            "path": "elite-api-stack/elite-domain-cert/CertificateRequestorFunction/ServiceRole/DefaultPolicy/Resource",
+                            "attributes": {
+                              "aws:cdk:cloudformation:type": "AWS::IAM::Policy",
+                              "aws:cdk:cloudformation:props": {
+                                "policyDocument": {
+                                  "Statement": [
+                                    {
+                                      "Action": [
+                                        "acm:RequestCertificate",
+                                        "acm:DescribeCertificate",
+                                        "acm:DeleteCertificate",
+                                        "acm:AddTagsToCertificate"
+                                      ],
+                                      "Effect": "Allow",
+                                      "Resource": "*"
+                                    },
+                                    {
+                                      "Action": "route53:GetChange",
+                                      "Effect": "Allow",
+                                      "Resource": "*"
+                                    },
+                                    {
+                                      "Action": "route53:changeResourceRecordSets",
+                                      "Effect": "Allow",
+                                      "Resource": {
+                                        "Fn::Join": [
+                                          "",
+                                          [
+                                            "arn:",
+                                            {
+                                              "Ref": "AWS::Partition"
+                                            },
+                                            ":route53:::hostedzone/Z02844713KMXUABLS9DJH"
+                                          ]
+                                        ]
+                                      }
+                                    }
+                                  ],
+                                  "Version": "2012-10-17"
+                                },
+                                "policyName": "elitedomaincertCertificateRequestorFunctionServiceRoleDefaultPolicy20145FC2",
+                                "roles": [
+                                  {
+                                    "Ref": "elitedomaincertCertificateRequestorFunctionServiceRoleD4B55ABB"
+                                  }
+                                ]
+                              }
+                            },
+                            "constructInfo": {
+                              "fqn": "aws-cdk-lib.aws_iam.CfnPolicy",
+                              "version": "2.16.0"
+                            }
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_iam.Policy",
+                          "version": "2.16.0"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_iam.Role",
+                      "version": "2.16.0"
+                    }
+                  },
+                  "Code": {
+                    "id": "Code",
+                    "path": "elite-api-stack/elite-domain-cert/CertificateRequestorFunction/Code",
+                    "children": {
+                      "Stage": {
+                        "id": "Stage",
+                        "path": "elite-api-stack/elite-domain-cert/CertificateRequestorFunction/Code/Stage",
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.AssetStaging",
+                          "version": "2.16.0"
+                        }
+                      },
+                      "AssetBucket": {
+                        "id": "AssetBucket",
+                        "path": "elite-api-stack/elite-domain-cert/CertificateRequestorFunction/Code/AssetBucket",
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_s3.BucketBase",
+                          "version": "2.16.0"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_s3_assets.Asset",
+                      "version": "2.16.0"
+                    }
+                  },
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "elite-api-stack/elite-domain-cert/CertificateRequestorFunction/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::Lambda::Function",
+                      "aws:cdk:cloudformation:props": {
+                        "code": {
+                          "s3Bucket": "cdk-hnb659fds-assets-388429540325-ap-southeast-2",
+                          "s3Key": "4d3f21fe611d8ebfd4f1f69754b7f986fed4ecf648d4fafe941cd81ede6cf60c.zip"
+                        },
+                        "role": {
+                          "Fn::GetAtt": [
+                            "elitedomaincertCertificateRequestorFunctionServiceRoleD4B55ABB",
+                            "Arn"
+                          ]
+                        },
+                        "handler": "index.certificateRequestHandler",
+                        "runtime": "nodejs12.x",
+                        "timeout": 900
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_lambda.CfnFunction",
+                      "version": "2.16.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_lambda.Function",
+                  "version": "2.16.0"
+                }
+              },
+              "CertificateRequestorResource": {
+                "id": "CertificateRequestorResource",
+                "path": "elite-api-stack/elite-domain-cert/CertificateRequestorResource",
+                "children": {
+                  "Default": {
+                    "id": "Default",
+                    "path": "elite-api-stack/elite-domain-cert/CertificateRequestorResource/Default",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.CfnResource",
+                      "version": "2.16.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.CustomResource",
+                  "version": "2.16.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_certificatemanager.DnsValidatedCertificate",
+              "version": "2.16.0"
+            }
+          },
           "elite-api": {
             "id": "elite-api",
             "path": "elite-api-stack/elite-api",
@@ -592,6 +804,73 @@
                 "path": "elite-api-stack/elite-api/Endpoint",
                 "constructInfo": {
                   "fqn": "aws-cdk-lib.CfnOutput",
+                  "version": "2.16.0"
+                }
+              },
+              "CustomDomain": {
+                "id": "CustomDomain",
+                "path": "elite-api-stack/elite-api/CustomDomain",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "elite-api-stack/elite-api/CustomDomain/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::ApiGateway::DomainName",
+                      "aws:cdk:cloudformation:props": {
+                        "domainName": "api.elite.clearsigma.com",
+                        "endpointConfiguration": {
+                          "types": [
+                            "REGIONAL"
+                          ]
+                        },
+                        "regionalCertificateArn": {
+                          "Fn::GetAtt": [
+                            "elitedomaincertCertificateRequestorResourceCABF1791",
+                            "Arn"
+                          ]
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_apigateway.CfnDomainName",
+                      "version": "2.16.0"
+                    }
+                  },
+                  "Map:--=>eliteapistackeliteapiD007831B": {
+                    "id": "Map:--=>eliteapistackeliteapiD007831B",
+                    "path": "elite-api-stack/elite-api/CustomDomain/Map:--=>eliteapistackeliteapiD007831B",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "elite-api-stack/elite-api/CustomDomain/Map:--=>eliteapistackeliteapiD007831B/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::ApiGateway::BasePathMapping",
+                          "aws:cdk:cloudformation:props": {
+                            "domainName": {
+                              "Ref": "eliteapiCustomDomain81D4B308"
+                            },
+                            "restApiId": {
+                              "Ref": "eliteapi3C1B9869"
+                            },
+                            "stage": {
+                              "Ref": "eliteapiDeploymentStageprod55EBF1F2"
+                            }
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_apigateway.CfnBasePathMapping",
+                          "version": "2.16.0"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_apigateway.BasePathMapping",
+                      "version": "2.16.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_apigateway.DomainName",
                   "version": "2.16.0"
                 }
               },
@@ -911,6 +1190,46 @@
               "version": "2.16.0"
             }
           },
+          "elite-api-a-record": {
+            "id": "elite-api-a-record",
+            "path": "elite-api-stack/elite-api-a-record",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "elite-api-stack/elite-api-a-record/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::Route53::RecordSet",
+                  "aws:cdk:cloudformation:props": {
+                    "name": "api.elite.clearsigma.com.",
+                    "type": "A",
+                    "aliasTarget": {
+                      "dnsName": {
+                        "Fn::GetAtt": [
+                          "eliteapiCustomDomain81D4B308",
+                          "RegionalDomainName"
+                        ]
+                      },
+                      "hostedZoneId": {
+                        "Fn::GetAtt": [
+                          "eliteapiCustomDomain81D4B308",
+                          "RegionalHostedZoneId"
+                        ]
+                      }
+                    },
+                    "hostedZoneId": "Z02844713KMXUABLS9DJH"
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_route53.CfnRecordSet",
+                  "version": "2.16.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_route53.ARecord",
+              "version": "2.16.0"
+            }
+          },
           "Exportapi-fn-arn": {
             "id": "Exportapi-fn-arn",
             "path": "elite-api-stack/Exportapi-fn-arn",
@@ -930,6 +1249,14 @@
           "Exportapi-fn-logs": {
             "id": "Exportapi-fn-logs",
             "path": "elite-api-stack/Exportapi-fn-logs",
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.CfnOutput",
+              "version": "2.16.0"
+            }
+          },
+          "Exportapi-a-record": {
+            "id": "Exportapi-a-record",
+            "path": "elite-api-stack/Exportapi-a-record",
             "constructInfo": {
               "fqn": "aws-cdk-lib.CfnOutput",
               "version": "2.16.0"

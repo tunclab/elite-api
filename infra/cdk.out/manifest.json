@@ -96,7 +96,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::388429540325:role/cdk-hnb659fds-deploy-role-388429540325-ap-southeast-2",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::388429540325:role/cdk-hnb659fds-cfn-exec-role-388429540325-ap-southeast-2",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-388429540325-ap-southeast-2/1aaaede64ce19e3bc2c3f47103103f179928b6040753f5ee3245b9d0ecd57ec4.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-388429540325-ap-southeast-2/f4071534afb04a88e07fa7fc2484f3451e8958f9423b43f483b910ffb9a0e327.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -154,6 +154,30 @@
             "data": "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A"
           }
         ],
+        "/elite-api-stack/elite-domain-cert/CertificateRequestorFunction/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "elitedomaincertCertificateRequestorFunctionServiceRoleD4B55ABB"
+          }
+        ],
+        "/elite-api-stack/elite-domain-cert/CertificateRequestorFunction/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "elitedomaincertCertificateRequestorFunctionServiceRoleDefaultPolicy20145FC2"
+          }
+        ],
+        "/elite-api-stack/elite-domain-cert/CertificateRequestorFunction/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "elitedomaincertCertificateRequestorFunctionA33C6227"
+          }
+        ],
+        "/elite-api-stack/elite-domain-cert/CertificateRequestorResource/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "elitedomaincertCertificateRequestorResourceCABF1791"
+          }
+        ],
         "/elite-api-stack/elite-api/Resource": [
           {
             "type": "aws:cdk:logicalId",
@@ -188,6 +212,18 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "eliteapiEndpointF28D076A"
+          }
+        ],
+        "/elite-api-stack/elite-api/CustomDomain/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "eliteapiCustomDomain81D4B308"
+          }
+        ],
+        "/elite-api-stack/elite-api/CustomDomain/Map:--=>eliteapistackeliteapiD007831B/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "eliteapiCustomDomainMapeliteapistackeliteapiD007831BCC6E3D42"
           }
         ],
         "/elite-api-stack/elite-api/Default/{proxy+}/Resource": [
@@ -232,6 +268,12 @@
             "data": "eliteapiANY17A2712A"
           }
         ],
+        "/elite-api-stack/elite-api-a-record/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "eliteapiarecord1031C08C"
+          }
+        ],
         "/elite-api-stack/Exportapi-fn-arn": [
           {
             "type": "aws:cdk:logicalId",
@@ -248,6 +290,12 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "Exportapifnlogs"
+          }
+        ],
+        "/elite-api-stack/Exportapi-a-record": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "Exportapiarecord"
           }
         ],
         "/elite-api-stack/CDKMetadata/Default": [
